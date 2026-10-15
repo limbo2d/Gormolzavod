@@ -1,0 +1,865 @@
+<!DOCTYPE html>  
+<html lang="kk">  
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />  
+  <title>Гормолзавод Көкшетау — Құрт Ысталған Promo</title>  
+  <!-- Фирменный разрешённый шрифт Open Sans (Google Fonts) -->  
+  <link rel="preconnect" href="https://fonts.googleapis.com">  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">  
+  <style>  
+    :root {  
+      /* Фирменная палитра по п. 3.3 брендбука */  
+      --bg-main: #FCF8F3;       /* Основной 35% */  
+      --sky-blue: #A4CFFF;      /* Основной 30% */  
+      --accent-blue: #0861C6;   /* Акцент 10% */  
+      --pure-white: #FFFDFC;    /* Акцент 10% */  
+      --add-red: #F84764;       /* Дополнительный 5% */  
+      --add-yellow: #FFF176;    /* Дополнительный 5% */  
+      --dark-blue: #1D3484;     /* Дополнительный 5% */  
+      --smoke-warm: #C67D38;    /* Тёплый оттенок копчения (<10%) */  
+    }  
+  
+    * {  
+      box-sizing: border-box;  
+      margin: 0;  
+      padding: 0;  
+      font-family: 'Open Sans', sans-serif;  
+      -webkit-tap-highlight-color: transparent;  
+    }  
+  
+    body {  
+      background-color: #E2ECF5;  
+      color: var(--dark-blue);  
+      display: flex;  
+      justify-content: center;  
+      min-height: 100vh;  
+    }  
+  
+    /* Контейнер мобильного приложения */  
+    .app-container {  
+      width: 100%;  
+      max-width: 430px;  
+      background-color: var(--bg-main);  
+      min-height: 100vh;  
+      display: flex;  
+      flex-direction: column;  
+      position: relative;  
+      box-shadow: 0 12px 40px rgba(29, 52, 132, 0.15);  
+      overflow-x: hidden;  
+      padding-bottom: 78px;  
+    }  
+  
+    /* Шапка с фирменным силуэтом гор */  
+    .app-header {  
+      background: linear-gradient(180deg, var(--accent-blue) 0%, var(--dark-blue) 100%);  
+      color: var(--pure-white);  
+      padding: 18px 20px 28px;  
+      position: relative;  
+      text-align: center;  
+      overflow: hidden;  
+    }  
+  
+    .brand-badge {  
+      display: inline-flex;  
+      flex-direction: column;  
+      align-items: center;  
+      background: var(--pure-white);  
+      color: var(--accent-blue);  
+      padding: 6px 18px;  
+      border-radius: 12px;  
+      border: 2px solid var(--sky-blue);  
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);  
+      margin-bottom: 10px;  
+    }  
+  
+    .brand-badge-title {  
+      font-weight: 800;  
+      font-size: 16px;  
+      letter-spacing: 0.8px;  
+      color: var(--accent-blue);  
+      line-height: 1.1;  
+    }  
+  
+    .brand-badge-sub {  
+      background: var(--add-red);  
+      color: var(--pure-white);  
+      font-size: 10px;  
+      font-weight: 700;  
+      padding: 2px 10px;  
+      border-radius: 6px;  
+      margin-top: 3px;  
+      letter-spacing: 1px;  
+    }  
+  
+    .header-product-title {  
+      font-size: 17px;  
+      font-weight: 800;  
+      margin-top: 4px;  
+      letter-spacing: 0.3px;  
+    }  
+  
+    .header-product-sub {  
+      font-size: 12px;  
+      color: var(--sky-blue);  
+      margin-top: 2px;  
+    }  
+  
+    .smoke-tag {  
+      display: inline-block;  
+      background: var(--smoke-warm);  
+      color: var(--pure-white);  
+      font-size: 11px;  
+      font-weight: 700;  
+      padding: 3px 10px;  
+      border-radius: 20px;  
+      margin-top: 8px;  
+    }  
+  
+    .mountain-divider {  
+      position: absolute;  
+      bottom: -1px;  
+      left: 0;  
+      width: 100%;  
+      height: 24px;  
+      display: block;  
+    }  
+  
+    /* Экраны */  
+    .screen {  
+      display: none;  
+      padding: 16px 18px;  
+      animation: fadeIn 0.25s ease;  
+    }  
+  
+    .screen.active {  
+      display: block;  
+    }  
+  
+    @keyframes fadeIn {  
+      from { opacity: 0; transform: translateY(6px); }  
+      to { opacity: 1; transform: translateY(0); }  
+    }  
+  
+    /* Карточки */  
+    .card {  
+      background: var(--pure-white);  
+      border-radius: 16px;  
+      padding: 16px;  
+      margin-bottom: 14px;  
+      border: 1.5px solid var(--sky-blue);  
+      box-shadow: 0 4px 14px rgba(8, 97, 198, 0.06);  
+    }  
+  
+    .section-title {  
+      font-size: 16px;  
+      font-weight: 800;  
+      color: var(--dark-blue);  
+      margin-bottom: 4px;  
+      display: flex;  
+      align-items: center;  
+      gap: 7px;  
+    }  
+  
+    .section-sub {  
+      font-size: 12px;  
+      color: #52658F;  
+      margin-bottom: 14px;  
+      line-height: 1.4;  
+    }  
+  
+    /* Форма регистрации (П. 6.2 - строго до 6 полей) */  
+    .form-group {  
+      margin-bottom: 11px;  
+    }  
+  
+    .form-label {  
+      display: block;  
+      font-size: 12px;  
+      font-weight: 700;  
+      color: var(--dark-blue);  
+      margin-bottom: 4px;  
+    }  
+  
+    .form-input, .form-select {  
+      width: 100%;  
+      padding: 10px 12px;  
+      border-radius: 10px;  
+      border: 1.5px solid var(--sky-blue);  
+      background: var(--bg-main);  
+      color: var(--dark-blue);  
+      font-size: 14px;  
+      font-weight: 600;  
+      outline: none;  
+      transition: border-color 0.2s;  
+    }  
+  
+    .form-input:focus, .form-select:focus {  
+      border-color: var(--accent-blue);  
+      background: var(--pure-white);  
+    }  
+  
+    .code-input-highlight {  
+      border: 2px dashed var(--smoke-warm);  
+      background: #FFF9F2;  
+      text-transform: uppercase;  
+      letter-spacing: 1.5px;  
+      font-weight: 800;  
+      text-align: center;  
+    }  
+  
+    .checkbox-group {  
+      display: flex;  
+      align-items: flex-start;  
+      gap: 9px;  
+      margin: 12px 0;  
+      font-size: 11.5px;  
+      line-height: 1.4;  
+      color: var(--dark-blue);  
+    }  
+  
+    .checkbox-group input {  
+      margin-top: 3px;  
+      width: 17px;  
+      height: 17px;  
+      accent-color: var(--accent-blue);  
+      flex-shrink: 0;  
+    }  
+  
+    .link-btn {  
+      color: var(--accent-blue);  
+      text-decoration: underline;  
+      cursor: pointer;  
+      font-weight: 700;  
+    }  
+  
+    /* Кнопки */  
+    .btn-primary {  
+      width: 100%;  
+      background: var(--accent-blue);  
+      color: var(--pure-white);  
+      border: none;  
+      padding: 13px 16px;  
+      border-radius: 12px;  
+      font-size: 14px;  
+      font-weight: 800;  
+      cursor: pointer;  
+      transition: transform 0.1s, background 0.2s;  
+      box-shadow: 0 4px 12px rgba(8, 97, 198, 0.25);  
+    }  
+  
+    .btn-primary:active {  
+      transform: scale(0.98);  
+    }  
+  
+    .btn-demo {  
+      width: 100%;  
+      background: var(--sky-blue);  
+      color: var(--dark-blue);  
+      border: none;  
+      padding: 9px 12px;  
+      border-radius: 10px;  
+      font-size: 12px;  
+      font-weight: 700;  
+      cursor: pointer;  
+      margin-bottom: 12px;  
+    }  
+  
+    /* Маршрут гор (Прогресс) */  
+    .mountain-track {  
+      background: linear-gradient(180deg, var(--sky-blue) 0%, var(--bg-main) 100%);  
+      border-radius: 14px;  
+      padding: 16px 12px 12px;  
+      position: relative;  
+      margin-bottom: 14px;  
+      border: 1.5px solid var(--accent-blue);  
+    }  
+  
+    .steps-row {  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      position: relative;  
+      margin: 14px 4px 8px;  
+    }  
+  
+    .steps-row::before {  
+      content: "";  
+      position: absolute;  
+      top: 50%;  
+      left: 0;  
+      right: 0;  
+      height: 4px;  
+      background: var(--pure-white);  
+      z-index: 1;  
+      transform: translateY(-50%);  
+    }  
+  
+    .step-node {  
+      position: relative;  
+      z-index: 2;  
+      width: 38px;  
+      height: 38px;  
+      border-radius: 50%;  
+      background: var(--pure-white);  
+      border: 2.5px solid var(--accent-blue);  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      justify-content: center;  
+      font-size: 11px;  
+      font-weight: 800;  
+      color: var(--dark-blue);  
+      transition: all 0.3s;  
+    }  
+  
+    .step-node.completed {  
+      background: var(--accent-blue);  
+      color: var(--pure-white);  
+      border-color: var(--dark-blue);  
+    }  
+  
+    .step-node.current {  
+      background: var(--add-yellow);  
+      color: var(--dark-blue);  
+      border-color: var(--smoke-warm);  
+      transform: scale(1.12);  
+    }  
+  
+    /* Инфографика белка и КБЖУ */  
+    .nutrition-grid {  
+      display: grid;  
+      grid-template-columns: repeat(3, 1fr);  
+      gap: 8px;  
+      margin-top: 10px;  
+    }  
+  
+    .nutri-box {  
+      background: var(--bg-main);  
+      border: 1px solid var(--sky-blue);  
+      border-radius: 10px;  
+      padding: 10px 6px;  
+      text-align: center;  
+    }  
+  
+    .nutri-val {  
+      font-size: 16px;  
+      font-weight: 800;  
+      color: var(--accent-blue);  
+    }  
+  
+    .nutri-label {  
+      font-size: 10px;  
+      font-weight: 600;  
+      color: var(--dark-blue);  
+      margin-top: 2px;  
+    }  
+  
+    /* Призы */  
+    .prize-item {  
+      display: flex;  
+      align-items: center;  
+      justify-content: space-between;  
+      padding: 12px;  
+      border-radius: 12px;  
+      background: var(--bg-main);  
+      border: 1.5px solid var(--sky-blue);  
+      margin-bottom: 10px;  
+    }  
+  
+    .prize-badge {  
+      background: var(--accent-blue);  
+      color: var(--pure-white);  
+      font-weight: 800;  
+      font-size: 11px;  
+      padding: 5px 10px;  
+      border-radius: 8px;  
+      white-space: nowrap;  
+    }  
+  
+    .prize-badge.unlocked {  
+      background: var(--add-red);  
+    }  
+  
+    /* Чат Telegram-бота (Сценарии удержания п. 6.5) */  
+    .bot-message {  
+      background: var(--bg-main);  
+      border-left: 4px solid var(--accent-blue);  
+      border-radius: 8px 14px 14px 8px;  
+      padding: 12px;  
+      margin-bottom: 12px;  
+      font-size: 12.5px;  
+      line-height: 1.45;  
+    }  
+  
+    .bot-meta {  
+      font-size: 10.5px;  
+      font-weight: 800;  
+      color: var(--accent-blue);  
+      margin-bottom: 4px;  
+      display: flex;  
+      justify-content: space-between;  
+    }  
+  
+    /* Нижняя навигация (5 экранов) */  
+    .bottom-nav {  
+      position: fixed;  
+      bottom: 0;  
+      width: 100%;  
+      max-width: 430px;  
+      background: var(--pure-white);  
+      border-top: 2px solid var(--sky-blue);  
+      display: flex;  
+      justify-content: space-around;  
+      padding: 6px 4px 10px;  
+      z-index: 20;  
+    }  
+  
+    .nav-btn {  
+      background: none;  
+      border: none;  
+      color: #6B7FA8;  
+      font-size: 10px;  
+      font-weight: 700;  
+      display: flex;  
+      flex-direction: column;  
+      align-items: center;  
+      gap: 3px;  
+      cursor: pointer;  
+      flex: 1;  
+    }  
+  
+    .nav-btn.active {  
+      color: var(--accent-blue);  
+    }  
+  
+    .nav-icon {  
+      font-size: 17px;  
+      line-height: 1;  
+    }  
+  
+    /* Модальное окно правил */  
+    .modal-overlay {  
+      display: none;  
+      position: fixed;  
+      inset: 0;  
+      background: rgba(29, 52, 132, 0.6);  
+      z-index: 50;  
+      align-items: center;  
+      justify-content: center;  
+      padding: 16px;  
+    }  
+  
+    .modal-box {  
+      background: var(--pure-white);  
+      max-width: 390px;  
+      width: 100%;  
+      border-radius: 16px;  
+      padding: 18px;  
+      border: 2px solid var(--sky-blue);  
+    }  
+  </style>  
+</head>  
+<body>  
+  
+<div class="app-container">  
+  <!-- Шапка в фирменном стиле Партнёра -->  
+  <header class="app-header">  
+    <div class="brand-badge">  
+      <span class="brand-badge-title">ГОРМОЛЗАВОД</span>  
+      <span class="brand-badge-sub">КӨКШЕТАУ • 1965</span>  
+    </div>  
+    <div class="header-product-title">ҚҰРТ ЫСТАЛҒАН / КУРТ КОПЧЁНЫЙ</div>  
+    <div class="header-product-sub">Табиғи сүт өнімі • Натуральный молочный продукт</div>  
+    <span class="smoke-tag">🔥 Табиғи ысталған • 60 г ақуыз / белка</span>  
+  
+    <!-- Силуэт гор из логотипа (п. 3.5) -->  
+    <svg class="mountain-divider" viewBox="0 0 400 28" preserveAspectRatio="none">  
+      <path d="M0,28 L0,18 L55,6 L95,19 L155,2 L215,20 L270,7 L335,18 L375,9 L400,18 L400,28 Z" fill="#FCF8F3"></path>  
+    </svg>  
+  </header>  
+  
+  <!-- ЭКРАН 1: РЕГИСТРАЦИЯ И ВХОД (п. 6.2) -->  
+  <section id="screen-1" class="screen active">  
+    <div class="card">  
+      <div class="section-title">⛰️ Кодты тіркеу / Регистрация кода</div>  
+      <div class="section-sub">  
+        Қаптама ішіндегі бірегей кодты енгізіп, «Гормолзавод» сыйлықтарына қадам жасаңыз.<br>  
+        Введите код изнутри упаковки и копите шаги к наградам.  
+      </div>  
+  
+      <button type="button" class="btn-demo" onclick="fillDemoData()">  
+        ⚡ Демо-толтыру (Қазылар алқасы үшін / Быстрый тест для жюри)  
+      </button>  
+  
+      <form id="regForm" onsubmit="handleRegistration(event)">  
+        <!-- Поле 1: Имя -->  
+        <div class="form-group">  
+          <label class="form-label">1. Аты-жөні / Имя *</label>  
+          <input type="text" id="userName" class="form-input" placeholder="Мысалы / Например: Тимур" required />  
+        </div>  
+  
+        <!-- Поле 2: Номер телефона -->  
+        <div class="form-group">  
+          <label class="form-label">2. Телефон нөмірі / Номер телефона *</label>  
+          <input type="tel" id="userPhone" class="form-input" placeholder="+7 (7__) ___-__-__" required />  
+        </div>  
+  
+        <!-- Поле 3: Город -->  
+        <div class="form-group">  
+          <label class="form-label">3. Қала / Город *</label>  
+          <select id="userCity" class="form-select" required>  
+            <option value="">Қаланы таңдаңыз / Выберите город</option>  
+            <option value="Астана">Астана</option>  
+            <option value="Көкшетау / Кокшетау">Көкшетау / Кокшетау</option>  
+            <option value="Алматы">Алматы</option>  
+            <option value="Қарағанды / Караганда">Қарағанды / Караганда</option>  
+            <option value="Басқа / Другой">Басқа / Другой город РК</option>  
+          </select>  
+        </div>  
+  
+        <!-- Поле 4: Возрастная группа -->  
+        <div class="form-group">  
+          <label class="form-label">4. Жас тобы / Возрастная группа *</label>  
+          <select id="userAge" class="form-select" required>  
+            <option value="">Таңдаңыз / Выберите группу</option>  
+            <option value="18–24 (Жастар / Молодёжь)">18–24 (Жастар / Молодёжь)</option>  
+            <option value="25–34 (Жас отбасы / Молодая семья)">25–34 (Жас отбасы / Молодая семья)</option>  
+            <option value="35–49 (Отбасы / Семья)">35–49 (Отбасы / Семья)</option>  
+            <option value="50+ (Дәстүрді бағалаушылар)">50+ (Любители традиций)</option>  
+          </select>  
+        </div>  
+  
+        <!-- Поле 5: Уникальный код с упаковки -->  
+        <div class="form-group">  
+          <label class="form-label">5. Қаптамадағы бірегей код / Уникальный код *</label>  
+          <input type="text" id="promoCode" class="form-input code-input-highlight" placeholder="GMZ-2026-XXXX" required />  
+        </div>  
+  
+        <!-- Поле 6: Дата регистрации (автоматически) -->  
+        <div class="form-group">  
+          <label class="form-label">6. Тіркелу күні / Дата регистрации кода</label>  
+          <input type="text" id="regDate" class="form-input" readonly />  
+        </div>  
+  
+        <!-- Согласие по Закону РК (п. 6.2) -->  
+        <label class="checkbox-group">  
+          <input type="checkbox" id="lawConsent" required />  
+          <span>  
+            ҚР «Дербес деректер және оларды қорғау туралы» Заңына сәйкес деректерді жинауға және өңдеуге келісемін / Согласен(на) на сбор и обработку персональных данных по Закону РК и принимаю  
+            <span class="link-btn" onclick="toggleRules(true)">акция ережелерін / правила акции</span>.  
+          </span>  
+        </label>  
+  
+        <button type="submit" class="btn-primary">  
+          ТІРКЕЛУ ЖӘНЕ КОДТЫ БЕЛСЕНДІРУ / АКТИВИРОВАТЬ КОД  
+        </button>  
+      </form>  
+    </div>  
+  </section>  
+  
+  <!-- ЭКРАН 2: ГЛАВНЫЙ ЭКРАН — МАРШРУТ «ВЕРШИНЫ КӨКШЕТАУ» -->  
+  <section id="screen-2" class="screen">  
+    <div class="mountain-track">  
+      <div class="section-title">🏔️ Көкшетау шыңдары / Вершины Көкшетау</div>  
+      <div class="section-sub" style="margin-bottom:6px;">  
+        Белсендірілген кодтар / Активировано кодов: <strong id="codesCountBadge">1</strong> из 10  
+      </div>  
+  
+      <!-- Визуальная шкала накопления -->  
+      <div class="steps-row">  
+        <div class="step-node completed" id="node-1">1<span>код</span></div>  
+        <div class="step-node current" id="node-3">3<span>кода</span></div>  
+        <div class="step-node" id="node-5">5<span>кодов</span></div>  
+        <div class="step-node" id="node-10">10<span>кодов</span></div>  
+      </div>  
+      <div style="font-size:11.5px; color:var(--dark-blue); font-weight:700; text-align:center; margin-top:8px;" id="nextStepHint">  
+        Келесі кепілді сыйлыққа дейін: 2 код қалды / До гарантированного приза: 2 кода  
+      </div>  
+    </div>  
+  
+    <!-- Быстрый ввод следующего кода -->  
+    <div class="card">  
+      <div class="section-title">➕ Жаңа код қосу / Ввести новый код</div>  
+      <div class="section-sub">Қаптаманың ішкі жағындағы кодты енгізіңіз / Введите код с внутренней стороны пачки:</div>  
+      <div style="display:flex; gap:8px;">  
+        <input type="text" id="newCodeInput" class="form-input code-input-highlight" placeholder="GMZ-XXXX" />  
+        <button class="btn-primary" style="width:auto; padding:0 18px;" onclick="addNewCode()">OK</button>  
+      </div>  
+    </div>  
+  
+    <!-- Польза продукта строго по п. 2.1 ТЗ -->  
+    <div class="card">  
+      <div class="section-title">💪 Табиғи пайда / Натуральная польза</div>  
+      <div class="section-sub">  
+        Құрамы: майсыз ірімшік, ас тұзы / Состав: творог нежирный, соль пищевая (на 100 г):  
+      </div>  
+      <div class="nutrition-grid">  
+        <div class="nutri-box">  
+          <div class="nutri-val">60 г</div>  
+          <div class="nutri-label">Ақуыз / Белки</div>  
+        </div>  
+        <div class="nutri-box">  
+          <div class="nutri-val">17 г</div>  
+          <div class="nutri-label">Көмірсу / Углеводы</div>  
+        </div>  
+        <div class="nutri-box">  
+          <div class="nutri-val">200 ккал</div>  
+          <div class="nutri-label">Қуаттылығы / Энергия</div>  
+        </div>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- ЭКРАН 3: ВИТРИНА ПРИЗОВ (п. 6.4) -->  
+  <section id="screen-3" class="screen">  
+    <div class="card">  
+      <div class="section-title">🎁 Сыйлықтар қоры / Призы от «Гормолзавод»</div>  
+      <div class="section-sub">  
+        Әрбір сатып алу сізді марапатқа жақындатады / Каждая покупка приближает к награде (Акция: 15.10.2026 – 15.01.2027).  
+      </div>  
+  
+      <div class="prize-item">  
+        <div>  
+          <div style="font-weight:800; font-size:13.5px;">1. Промокод -15% на продукцию</div>  
+          <div style="font-size:11.5px; color:#52658F;">Фирменная скидка + 1 билет в розыгрыш</div>  
+        </div>  
+        <span class="prize-badge unlocked" id="prize-1">1 КОД ✓</span>  
+      </div>  
+  
+      <div class="prize-item">  
+        <div>  
+          <div style="font-weight:800; font-size:13.5px;">2. Дорожный тубус для курта</div>  
+          <div style="font-size:11.5px; color:#52658F;">Удобно брать на учёбу, работу и в машину</div>  
+        </div>  
+        <span class="prize-badge" id="prize-3">3 КОДА</span>  
+      </div>  
+  
+      <div class="prize-item">  
+        <div>  
+          <div style="font-weight:800; font-size:13.5px;">3. Термокружка «Гормолзавод Көкшетау»</div>  
+          <div style="font-size:11.5px; color:#52658F;">Горячий чай и копчёный курт в любую дорогу</div>  
+        </div>  
+        <span class="prize-badge" id="prize-5">5 КОДОВ</span>  
+      </div>  
+  
+      <div class="prize-item">  
+        <div>  
+          <div style="font-weight:800; font-size:13.5px;">4. Семейный бокс продукции + Бурабай</div>  
+          <div style="font-size:11.5px; color:#52658F;">Набор натуральной молочной продукции и главный розыгрыш отдыха в Бурабае</div>  
+        </div>  
+        <span class="prize-badge" id="prize-10">10 КОДОВ</span>  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- ЭКРАН 4: ЛИЧНЫЙ КАБИНЕТ И ИСТОРИЯ -->  
+  <section id="screen-4" class="screen">  
+    <div class="card">  
+      <div class="section-title">👤 Сатып алушы профилі / Профиль покупателя</div>  
+      <div class="section-sub">Клиенттердің бірыңғай базасындағы деректер / Данные в единой базе Партнёра:</div>  
+      <div style="font-size:13px; line-height:1.7;" id="profileInfo">  
+        <div><strong>Аты / Имя:</strong> <span id="pName">Қонақ / Гость</span></div>  
+        <div><strong>Телефон:</strong> <span id="pPhone">—</span></div>  
+        <div><strong>Қала / Город:</strong> <span id="pCity">—</span></div>  
+        <div><strong>Жас тобы / Возраст:</strong> <span id="pAge">—</span></div>  
+        <div><strong>Жиналған ақуыз / Получено белка:</strong> <span id="pProtein" style="color:var(--accent-blue); font-weight:800;">36 г</span></div>  
+      </div>  
+    </div>  
+  
+    <div class="card">  
+      <div class="section-title">📜 Тіркелген кодтар / История кодов</div>  
+      <div id="codeHistoryList" style="font-size:12.5px; line-height:1.6; color:var(--dark-blue);">  
+        <div>• <strong>GMZ-2026-7701</strong> — белсендірілді / активирован</div>  
+      </div>  
+    </div>  
+  
+    <div class="card" style="font-size:11.5px; line-height:1.45;">  
+      <strong>Дайындаушы / Изготовитель:</strong> ТОО «Гормолзавод», 020000, РК, Акмолинская обл., г. Кокшетау, Восточная промзона, 20-й проезд, 8в.<br>  
+      Тел.: +7 747 377 15 29, +7 7162 77 15 29 | ok@gormolzavod.kz | @gormolzavod  
+    </div>  
+  </section>  
+  
+  <!-- ЭКРАН 5: СЦЕНАРИИ УДЕРЖАНИЯ (п. 6.5 и 6.6) -->  
+  <section id="screen-5" class="screen">  
+    <div class="card">  
+      <div class="section-title">💬 Сатып алушыны ұстап қалу / 3 сценария удержания</div>  
+      <div class="section-sub">  
+        Бренд үнімен (адал, сабырлы, агрессивті сатылымсыз) Telegram-бот арқылы жіберілетін хабарламалар / Сообщения по п. 6.5 ТЗ:  
+      </div>  
+  
+      <div class="bot-message">  
+        <div class="bot-meta">  
+          <span>Сценарий 1 • Через 3 дня после 1-го кода</span>  
+          <span>Telegram-бот</span>  
+        </div>  
+        «Қайырлы күн, <span class="msg-name">дос</span>! Сіздің "Көкшетау шыңдары" маршрутындағы алғашқы қадамыңыз сақталды. Оқуда немесе жұмыста үзіліс жасағанда, табиғи ысталған құрт пен жылы шай күш береді. Кепілді жол тубусына дейін 2 код қалды. Берекелі күн тілейміз!»  
+      </div>  
+  
+      <div class="bot-message">  
+        <div class="bot-meta">  
+          <span>Сценарий 2 • В 1 шаге от награды (2 или 4 кода)</span>  
+          <span>Telegram-бот</span>  
+        </div>  
+        «Сәлеметсіз бе! Сіз "Гормолзавод" фирмалық сыйлығына өте жақынсыз — бар болғаны 1 қаптама код қалды. Біздің құрт 100% табиғи майсыз ірімшіктен жасалған (100 грамда 60 г ақуыз). Жаңа кодты кез келген уақытта енгізе аласыз!»  
+      </div>  
+  
+      <div class="bot-message">  
+        <div class="bot-meta">  
+          <span>Сценарий 3 • 14 дней без активности / Перед розыгрышем</span>  
+          <span>Telegram-бот</span>  
+        </div>  
+        «Құрметті сатып алушы! Отбасылық дастарханыңызға Көкшетаудың табиғи өнімдерін таңдағаныңыз үшін рақмет. Осы жұмада Бурабайға отбасылық жолдама мен сүт өнімдері жиынтығы ойнатылады — сіздің жинаған кодтарыңыз ұтысқа автоматты түрде қатысады!»  
+      </div>  
+    </div>  
+  </section>  
+  
+  <!-- Нижняя панель навигации по 5 экранам -->  
+  <nav class="bottom-nav">  
+    <button class="nav-btn active" onclick="switchScreen(1, this)">  
+      <span class="nav-icon">📝</span>  
+      <span>Тіркелу / Вход</span>  
+    </button>  
+    <button class="nav-btn" onclick="switchScreen(2, this)">  
+      <span class="nav-icon">🏔️</span>  
+      <span>Шыңдар / Путь</span>  
+    </button>  
+    <button class="nav-btn" onclick="switchScreen(3, this)">  
+      <span class="nav-icon">🎁</span>  
+      <span>Сыйлық / Призы</span>  
+    </button>  
+    <button class="nav-btn" onclick="switchScreen(4, this)">  
+      <span class="nav-icon">👤</span>  
+      <span>Профиль</span>  
+    </button>  
+    <button class="nav-btn" onclick="switchScreen(5, this)">  
+      <span class="nav-icon">💬</span>  
+      <span>CRM / Бот</span>  
+    </button>  
+  </nav>  
+</div>  
+  
+<!-- Модальное окно с краткими правилами акции (п. 5.2 и 6.2) -->  
+<div class="modal-overlay" id="rulesModal">  
+  <div class="modal-box">  
+    <div class="section-title">📄 Акция ережелері / Правила акции</div>  
+    <p style="font-size:12px; line-height:1.5; margin:10px 0; color:var(--dark-blue);">  
+      1. <strong>Ұйымдастырушы / Организатор:</strong> ТОО «Гормолзавод», г. Кокшетау, Восточная промзона, 20-й проезд, 8в.<br>  
+      2. <strong>Өткізу мерзімі / Сроки:</strong> 15.10.2026 – 15.01.2027.<br>  
+      3. <strong>Механика:</strong> Покупатель приобретает копчёный курт «Гормолзавод», сканирует QR-код на упаковке и регистрирует уникальный код с внутренней стороны пачки.<br>  
+      4. <strong>Дербес деректер / Персональные данные:</strong> Обработка осуществляется строго в соответствии с Законом РК «О персональных данных и их защите».  
+    </p>  
+    <button class="btn-primary" onclick="toggleRules(false)">Түсінікті / Понятно</button>  
+  </div>  
+</div>  
+  
+<script>  
+  let totalCodes = 1;  
+  const codesList = ["GMZ-2026-7701"];  
+  
+  // Автоматическая установка текущей даты регистрации кода (Поле 6)  
+  function updateCurrentDate() {  
+    const now = new Date();  
+    const formatted = now.toLocaleDateString('ru-RU') + ' ' + now.toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});  
+    document.getElementById('regDate').value = formatted;  
+  }  
+  updateCurrentDate();  
+  
+  // Переключение между 5 экранами  
+  function switchScreen(num, btnEl) {  
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));  
+    document.getElementById('screen-' + num).classList.add('active');  
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));  
+    if (btnEl) {  
+      btnEl.classList.add('active');  
+    } else {  
+      document.querySelectorAll('.nav-btn')[num - 1].classList.add('active');  
+    }  
+    window.scrollTo({ top: 0, behavior: 'smooth' });  
+  }  
+  
+  // Быстрое заполнение для демонстрации жюри на питче  
+  function fillDemoData() {  
+    document.getElementById('userName').value = 'Тимур';  
+    document.getElementById('userPhone').value = '+7 (747) 377-15-29';  
+    document.getElementById('userCity').value = 'Астана';  
+    document.getElementById('userAge').value = '18–24 (Жастар / Молодёжь)';  
+    document.getElementById('promoCode').value = 'GMZ-2026-8842';  
+    document.getElementById('lawConsent').checked = true;  
+    updateCurrentDate();  
+  }  
+  
+  // Обработка регистрации  
+  function handleRegistration(e) {  
+    e.preventDefault();  
+    const name = document.getElementById('userName').value.trim();  
+    const phone = document.getElementById('userPhone').value.trim();  
+    const city = document.getElementById('userCity').value;  
+    const age = document.getElementById('userAge').value;  
+    const code = document.getElementById('promoCode').value.trim().toUpperCase();  
+  
+    document.getElementById('pName').textContent = name;  
+    document.getElementById('pPhone').textContent = phone;  
+    document.getElementById('pCity').textContent = city;  
+    document.getElementById('pAge').textContent = age;  
+    document.querySelectorAll('.msg-name').forEach(el => el.textContent = name);  
+  
+    if (code && !codesList.includes(code)) {  
+      codesList.push(code);  
+      totalCodes = codesList.length;  
+    }  
+    renderProgress();  
+    switchScreen(2);  
+  }  
+  
+  // Добавление нового кода на главном экране  
+  function addNewCode() {  
+    const input = document.getElementById('newCodeInput');  
+    const val = input.value.trim().toUpperCase() || ('GMZ-2026-' + Math.floor(1000 + Math.random() * 9000));  
+    codesList.push(val);  
+    totalCodes = codesList.length;  
+    input.value = '';  
+    renderProgress();  
+  }  
+  
+  // Обновление шкалы гор, счётчика белка и списка кодов  
+  function renderProgress() {  
+    document.getElementById('codesCountBadge').textContent = totalCodes;  
+    document.getElementById('pProtein').textContent = (totalCodes * 36) + ' г (из пачек по 60 г)';  
+  
+    const historyEl = document.getElementById('codeHistoryList');  
+    historyEl.innerHTML = codesList.map(c => `<div>• <strong>${c}</strong> — белсендірілді / активирован (${document.getElementById('regDate').value})</div>`).join('');  
+  
+    const milestones = [1, 3, 5, 10];  
+    milestones.forEach(m => {  
+      const node = document.getElementById('node-' + m);  
+      const prize = document.getElementById('prize-' + m);  
+      node.classList.remove('completed', 'current');  
+      if (totalCodes >= m) {  
+        node.classList.add('completed');  
+        if (prize) {  
+          prize.classList.add('unlocked');  
+          prize.textContent = m + ' КОД ✓';  
+        }  
+      }  
+    });  
+  
+    const nextM = milestones.find(m => m > totalCodes);  
+    const hint = document.getElementById('nextStepHint');  
+    if (nextM) {  
+      document.getElementById('node-' + nextM).classList.add('current');  
+      const left = nextM - totalCodes;  
+      hint.textContent = `Келесі кепілді сыйлыққа дейін: ${left} код қалды / До следующего приза: ${left} код(а)`;  
+    } else {  
+      hint.textContent = '🎉 Барлық шыңдар бағындырылды! Вы открыли все уровни наград!';  
+    }  
+  }  
+  
+  function toggleRules(show) {  
+    document.getElementById('rulesModal').style.display = show ? 'flex' : 'none';  
+  }  
+</script>  
+  
+</body>  
+</html>  
